@@ -1,0 +1,53 @@
+.subRouteActive {
+  padding: 10px;
+  border-radius: 3px;
+  background-color: #ffab40; }
+
+.header {
+  background-color: #b700ff; }
+
+.nav-link--active {
+  background-color: rgba(0, 0, 0, 0.2); }
+
+.brand-logo--header img {
+  width: 80px; }
+
+.div {
+  background-color: lightgreen;
+  width: 500px;
+  height: 500px; }
+
+.card-title--list {
+  text-shadow: 0 0 10px  #b700ff, 0 5px 10px  #b700ff, -5px 0 10px  #b700ff;
+  margin-bottom: 0; }
+
+.card-image--list {
+  height: 12.2vw; }
+
+.pointer:hover {
+  cursor: pointer; }
+
+.App {
+  text-align: center; }
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px; }
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white; }
+
+.App-title {
+  font-size: 1.5em; }
+
+.App-intro {
+  font-size: large; }
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
