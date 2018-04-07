@@ -14,7 +14,7 @@ ReactDOM.render(
     <ConnectedRouter history={history}>
       <Route path="/" component={App} />
     </ConnectedRouter>
-  </ Provider>,
+  </Provider>,
   document.getElementById('root'),
 );
 registerServiceWorker();

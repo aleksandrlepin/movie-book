@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Row, Col, CardPanel, Pagination } from 'react-materialize';
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
 import { loadMovies } from '../../actions/moviesActions';
 import Card from '../Card';
 
@@ -35,17 +35,19 @@ class List extends Component {
     return (
       <div>
         <Row>
-          <NavLink to={`${this.props.match.url}/aaa`} activeClassName="subRouteActive white-text" >Top Rated/aaa</NavLink>
           {this.props.movies.data.results !== undefined && this.props.movies.data.results.map(item => (
             <Col s={12} m={6} l={3}>
-              <Card
-                backdrop_path={item.backdrop_path}
-                original_title={item.original_title}
-                release_date={item.release_date}
-                vote_average={item.vote_average}
-                handleCardHover={this.handleCardHover}
-              />
-            </Col>))}
+              <NavLink to={`${this.props.match.url}/${item.id}`}>
+                <Card
+                  backdrop_path={item.backdrop_path}
+                  original_title={item.original_title}
+                  release_date={item.release_date}
+                  vote_average={item.vote_average}
+                  handleCardHover={this.handleCardHover}
+                />
+              </NavLink>
+            </Col>
+          ))}
         </Row>
         <Row>
           <Col s={12} className="center-align">
