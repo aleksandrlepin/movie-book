@@ -1,23 +1,23 @@
 import * as types from './actionTypes';
 import MovieApi from '../api/movieApi';
 
-const loadMoviesStart = () => ({
-  type: types.LOAD_MOVIES_START,
+const loadMovieInfoStart = () => ({
+  type: types.LOAD_MOVIE_INFO_START,
   payload: {
     isLoading: true,
   },
 });
 
-const loadMoviesSuccess = movies => ({
-  type: types.LOAD_MOVIES_SUCCESS,
+const loadMovieInfoSuccess = movies => ({
+  type: types.LOAD_MOVIE_INFO_SUCCESS,
   payload: {
     data: movies,
     isLoading: false,
   },
 });
 
-const loadMoviesFailed = (error, errorMessage) => ({
-  type: types.LOAD_MOVIES_FAILED,
+const loadMovieInfoFailed = (error, errorMessage) => ({
+  type: types.LOAD_MOVIE_INFO_FAILED,
   payload: {
     error,
     errorMessage,
@@ -25,15 +25,15 @@ const loadMoviesFailed = (error, errorMessage) => ({
   },
 });
 
-export const loadMovies = (query, param) => dispatch => {
-  dispatch(loadMoviesStart());
+export const loadMovieInfo = (query, param) => dispatch => {
+  dispatch(loadMovieInfoStart());
   return MovieApi.get(query, param)
     .then(data => {
       if (data.success === false) {
         console.log('data: ', data);
-        dispatch(loadMoviesFailed(true, data.status_message));
+        dispatch(loadMovieInfoFailed(true, data.status_message));
       }
-      dispatch(loadMoviesSuccess(data));
+      dispatch(loadMovieInfoSuccess(data));
     })
     .catch(error => {
       console.log('error: ', error);

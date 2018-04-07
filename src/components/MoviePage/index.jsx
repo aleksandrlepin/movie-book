@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'react-materialize';
+import { Row, Col, Preloader, Badge } from 'react-materialize';
 import { connect } from 'react-redux';
-import { loadMovies } from '../../actions/moviesActions';
+import { loadMovieInfo } from '../../actions/movieInfoActions';
 
 class MoviePage extends Component {
   componentDidMount = () => {
@@ -9,17 +9,23 @@ class MoviePage extends Component {
   }
 
   render() {
-    const { poster_path, original_title, overview } = this.props.details;
+    const { poster_path, original_title, overview, vote_average, vote_count } = this.props.movieInfo.data;
     return (
       <Row>
         <Col s={12}>
           <div className="card horizontal">
+            {this.props.movieInfo.isLoading &&
+              <Preloader size="big" />
+            }
             <div className="card-image">
-              <img src={`http://image.tmdb.org/t/p/w300/${poster_path}`} alt={original_title} />
+              <img src={`http://image.tmdb.org/t/p/w342/${poster_path}`} alt={original_title} />
             </div>
             <div className="card-stacked">
               <div className="card-content">
-                <h3>{original_title}</h3>
+                <h4>
+                  {original_title}
+                </h4>
+                <p>Rating {vote_average} / {vote_count} votes</p>
                 <p>{overview}</p>
               </div>
               <div className="card-action">
@@ -34,12 +40,12 @@ class MoviePage extends Component {
 }
 
 const mapStateToProps = state => ({
-  details: state.movies.data,
+  movieInfo: state.movieInfo,
 });
 
 const mapDispatchToProps = dispatch => ({
   load(querry, param) {
-    dispatch(loadMovies(querry, param));
+    dispatch(loadMovieInfo(querry, param));
   },
 });
 

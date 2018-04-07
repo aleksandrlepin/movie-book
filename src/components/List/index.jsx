@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Row, Col, CardPanel, Pagination } from 'react-materialize';
+import { Row, Col, Pagination, Preloader } from 'react-materialize';
 import { NavLink } from 'react-router-dom';
 import { loadMovies } from '../../actions/moviesActions';
 import Card from '../Card';
@@ -35,6 +35,18 @@ class List extends Component {
     return (
       <div>
         <Row>
+          {this.props.movies.isLoading &&
+            <Col s={12}>
+              <div className="center-align">
+                <Preloader size="big" />
+              </div>
+            </Col>
+          }
+          {this.props.movies.error &&
+            <Col s={12}>
+              <h5 className="center-align">Sorry, something goes wrong...</h5>
+            </Col>
+          }
           {this.props.movies.data.results !== undefined && this.props.movies.data.results.map(item => (
             <Col s={12} m={6} l={3}>
               <NavLink to={`${this.props.match.url}/${item.id}`}>

@@ -15,6 +15,6 @@ ReactDOM.render(
       <Route path="/" component={App} />
     </ConnectedRouter>
   </Provider>,
-  document.getElementById('root'),
+  document.getElementById('root')
 );
 registerServiceWorker();

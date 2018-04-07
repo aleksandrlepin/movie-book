@@ -7,17 +7,17 @@ const initialState = {
   errorMessage: '',
 };
 
-const moviesReducer = (state = initialState, action) => {
+const movieInfoReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.LOAD_MOVIES_START:
+    case types.LOAD_MOVIE_INFO_START:
       return { ...state, ...action.payload };
-    case types.LOAD_MOVIES_SUCCESS:
+    case types.LOAD_MOVIE_INFO_SUCCESS:
       return { ...state, ...action.payload };
-    case types.LOAD_MOVIES_FAILED:
+    case types.LOAD_MOVIE_INFO_FAILED:
       return { ...state, ...action.payload };
     default:
       return state;
   }
 };
 
-export default moviesReducer;
+export default movieInfoReducer;

@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import Header from './Header';
 import Home from './Home';
 import About from './About';
-import Gallery from './Gallery';
+import Movies from './Movies';
 import WatchList from './WatchList';
 
 const App = props => (
@@ -13,7 +13,7 @@ const App = props => (
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/about" component={About} />
-      <Route path="/gallery" component={Gallery} />
+      <Route path="/movies" component={Movies} />
       <Route path="/watch-list" component={WatchList} />
       <Route render={() => <h2>404 not found!!! sorry</h2>} />
     </Switch>
