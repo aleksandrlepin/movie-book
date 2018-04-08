@@ -6,9 +6,9 @@ import { loadMovies } from '../../actions/moviesActions';
 import Card from '../Card';
 
 class List extends Component {
-  componentDidMount() {
-    this.props.load(this.props.match.params.option, 'language=en-US&page=1');
-  }
+  // componentDidMount() {
+  //   this.props.load(this.props.match.params.option, 'language=en-US&page=1');
+  // }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.option !== nextProps.match.params.option) {
@@ -30,8 +30,8 @@ class List extends Component {
   }
 
   render() {
-    const { option } = this.props.match.params.option;
-    const { page, total_pages } = this.props.movies.data;
+    const { option } = this.props.match.params;
+    const { page, total_pages } = this.props.movies[option];
     return (
       <div>
         <Row>
@@ -47,7 +47,7 @@ class List extends Component {
               <h5 className="center-align">Sorry, something goes wrong...</h5>
             </Col>
           }
-          {this.props.movies.data.results !== undefined && this.props.movies.data.results.map(item => (
+          {this.props.movies[option].results !== undefined && this.props.movies[option].results.map(item => (
             <Col s={12} m={6} l={3}>
               <NavLink to={`${this.props.match.url}/${item.id}`}>
                 <Card
@@ -66,7 +66,7 @@ class List extends Component {
             <Pagination
               onSelect={this.handlePagination}
               items={total_pages}
-              activePage={this.props.movies.data.page}
+              activePage={this.props.movies[option].page}
               maxButtons={8}
             />
           </Col>

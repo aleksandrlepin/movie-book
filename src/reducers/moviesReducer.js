@@ -1,10 +1,18 @@
 import * as types from '../actions/actionTypes';
 
 const initialState = {
-  data: {},
-  isLoading: false,
-  error: false,
-  errorMessage: '',
+  now_playing: {
+    isLoading: false,
+    error: false,
+  },
+  upcoming: {
+    isLoading: false,
+    error: false,
+  },
+  popular: {
+    isLoading: false,
+    error: false,
+  },
 };
 
 const moviesReducer = (state = initialState, action) => {
