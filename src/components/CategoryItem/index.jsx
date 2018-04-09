@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Col } from 'react-materialize';
+import CrossfadeImage from 'react-crossfade-image';
 import { connect } from 'react-redux';
 import { loadMovies } from '../../actions/moviesActions';
 
@@ -28,13 +29,19 @@ class CategoryItem extends Component {
   render() {
     const { title, category, match } = this.props;
     const { results } = this.props.movies[category];
+
     return (
-      <Col s={4}>
+      <Col s={12} m={4}>
         <NavLink to={`${match.url}/${category}`}>
-          <div className="card">
-            <h4>{title}</h4>
+          <div className="card category-card">
+            <div className="card-action">
+              <h5>{title}</h5>
+              {/* <h4>{title}</h4> */}
+            </div>
             <div className="card-image">
-              <img src={results && `http://image.tmdb.org/t/p/w500/${results[this.state.page].poster_path}`} alt={title} />
+              {results &&
+                <CrossfadeImage src={`http://image.tmdb.org/t/p/w500/${results[this.state.page].poster_path}`} style={{ maxWidth: '100%', maxHeight: '100%' }} />
+              }
             </div>
           </div>
         </NavLink>
